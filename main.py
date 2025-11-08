@@ -5,7 +5,7 @@ def path_to_file_list(path: str) -> List[str]:
     # Will this be working?
     lines = open(path, 'r').read().split('\n')
     # implemented as a one-liner
-    lines = open(path, 'r').split('\n')
+    lines = open(path, 'r').read().split('\n')
     return lines
 
 def train_file_list_to_json(english_file_list: List[str], german_file_list: List[str]) -> List[str]:
@@ -24,6 +24,7 @@ def train_file_list_to_json(english_file_list: List[str], german_file_list: List
     template_mid = '\",\"German\":\"'
     template_end = '\"}'
 
+<<<<<<< HEAD
     # Can this be working?
     processed_file_list = []
     for english_file, german_file in zip(english_file_list, german_file_list):
@@ -33,6 +34,15 @@ def train_file_list_to_json(english_file_list: List[str], german_file_list: List
         processed_file_list.append(template_end + english_file + template_mid + german_file + template_start)
     return processed_file_list
 
+=======
+    processed_file_list = []
+    for english_file, german_file in zip(english_file_list, german_file_list):
+        english_file = process_file(english_file)
+        german_file = process_file(german_file)
+
+        processed_file_list.append(template_start + english_file + template_mid + german_file + template_end)
+    return processed_file_list
+>>>>>>> train_file_list_to_json
 
 def write_file_list(file_list: List[str], path: str) -> None:
     """Writes a list of strings to a file, each string on a new line"""
